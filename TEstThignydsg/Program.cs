@@ -52,6 +52,25 @@ namespace TEstThignydsg
                 }
             },
 
+            { "hooks_detours",
+                new List<string> {
+                    "Hooks are basically like a path with a sign that tells you what to do and you just change that info with ur own, detours on the other hand are like erasing part of the path and detouring it to ur own"
+                }
+            },
+
+            { "how_are_you",
+                new List<string> {
+                    "Im doing great! you?",
+                    "Im doing good! you?",
+                    "Im doing fine! you?",
+                    "Im doing great! how about you?",
+                    "Great! how about you?",
+                    "Good! how about you?",
+                    "Fine! how about you?",
+                    "Im doing great! how are you?",
+                }
+            },
+
             { "unknown",
                 new List<string> {
                     "I dont understand what your trying to say",
