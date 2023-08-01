@@ -10,12 +10,19 @@ namespace TEstThignydsg
     {
         static Dictionary<string, List<string>> responses = new Dictionary<string, List<string>>
         {
-            { "say_hello",
+            { "greeting",
                 new List<string> {
                     "Hello",
                     "Hi",
                     "Hey",
-                    "Heyo"
+                    "Heyo",
+                    "Hiya",
+                    "Hi there",
+                    "Hello there",
+                    "Hey there",
+                    "Hi there, how are you?",
+                    "Hello there, how are you?",
+                    "Hey there, how are you?",
                 }
             },
 
@@ -24,14 +31,35 @@ namespace TEstThignydsg
                     "cya",
                     "goodbye",
                     "later then",
-                    "bye"
+                    "bye",
+                    "see ya",
+                    "see you later",
+                    "see you later then",
+                    "see you later then, bye",
                 }
             },
 
             { "thanks",
                 new List<string> {
                     "your welcome",
-                    "your very welcome"
+                    "your very welcome",
+                    "no problem",
+                    "no problem, your welcome",
+                    "no problem, your very welcome",
+                    "no problem, glad i could help"
+                }
+            },
+
+            { "unknown",
+                new List<string> {
+                    "I dont understand what your trying to say",
+                    "Huh? please be more specific, im confused",
+                    "I dont know what your trying to say",
+                    "I dont understand",
+                    "mind explaining? im confused",
+                    "I dont understand what your trying to say, please be more specific",
+                    "please be more specific",
+                    "I dont understand, please be more specific",
                 }
             }
         };
@@ -45,7 +73,8 @@ namespace TEstThignydsg
 
         static void Main(string[] args)
         {
-            string accessToken = "x";
+            // YOUR_API_KEY_HERE
+            string accessToken = "YOUR_API_KEY_HERE";
 
             while (true)
             {
@@ -63,6 +92,12 @@ namespace TEstThignydsg
                     JavaScriptSerializer jss = new JavaScriptSerializer();
 
                     IntentRoot intentRoot = jss.Deserialize<IntentRoot>(jsonResponse);
+
+                    if (intentRoot.intents.Count < 1)
+                    {
+                        Console.WriteLine("AI: [ERROR] " + GetResponseFor("unknown"));
+                        continue;
+                    }
 
                     Intent likelyIntent = intentRoot.intents.First();
 
